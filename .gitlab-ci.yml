@@ -1,0 +1,124 @@
+image: "node:latest"
+
+cache:
+  key: ${CI_COMMIT_REF_NAME}
+  paths:
+    - node_modules/
+    - .sfdx/
+
+####################################################
+# The sequential stages of this pipeline.  Jobs within a stage run in parallel. # https://docs.gitlab.com/ee/ci/yaml/README.html#stages
+####################################################
+stages: 
+ - test-validation
+ - deploy
+
+validation:
+  stage: test-validation
+  when: manual
+  artifacts:
+    paths:
+      - node_modules
+      - sfdx
+  only:
+   - master
+  allow_failure: false
+  environment:
+    name: sandbox
+    url: https://login.salesforce.com   
+  script:
+    # By default, the CLI periodically checks for and installs updates. # Disable (false) this auto-update check to improve performance of CLI commands.
+    #    - sfdx config:set restDeploy=true --global
+    - export SFDX_AUTOUPDATE_DISABLE=false
+    - npm install --global sfdx-cli --save
+    - install_jq
+    - install_lwc_jest 
+    - npm i shelljs
+    - echo y | sfdx plugins:install sfdx-git-delta
+    - npm install sfdx-git-delta@latest --global
+    - node ./deploymentFunctions/deploy.js --username=ciureanub@yahoo.com.full --consumerKey=$CONSUMER_KEY --loginURL="https://login.salesforce.com" --topCommit=$CI_COMMIT_SHORT_SHA --branch=$CI_COMMIT_REF_NAME --checkDeploy=yes
+
+deploy:
+  stage: deploy
+  when: manual
+  #variables:
+  #  - $CI_COMMIT_REF_NAME == 'master'
+  only:
+   - master
+  allow_failure: false
+  environment:
+    name: sandbox
+    url: https://login.salesforce.com
+  script:
+    # By default, the CLI periodically checks for and installs updates.
+    # Disable (false) this auto-update check to improve performance of CLI commands.
+    - export SFDX_AUTOUPDATE_DISABLE=false
+    #- export
+    #- echo "export from bash:"
+    #- echo $CI_COMMIT_SHORT_SHA
+    - npm install sfdx-cli --global
+    - install_jq
+    - install_lwc_jest 
+    - npm i shelljs
+    - echo y | sfdx plugins:install sfdx-git-delta
+    - npm install sfdx-git-delta@latest --global
+    - node ./deploymentFunctions/deploy.js --username=ciureanub@yahoo.com.full --consumerKey=$CONSUMER_KEY --loginURL="https://login.salesforce.com" --topCommit=$CI_COMMIT_SHORT_SHA --branch=$CI_COMMIT_REF_NAME --checkDeploy=no
+
+.sfdx_helpers: &sfdx_helpers |
+
+  # Function to install jq json parsing library; No arguments.
+  function install_jq() {
+    apt update && apt -y install jq
+  }
+
+  # Function to install LWC Jest dependencies.
+  # Will create or update the package.json with { "test:lwc" : "lwc-jest" } to the scripts property.
+  # No arguments.
+
+  function install_lwc_jest() {
+
+    # Create a default package.json if file doesn't exist
+    if [ ! -f "package.json" ]; then
+      npm init -y
+    fi
+
+    # Check if the scripts property in package.json contains key for "test:lwc"
+    local scriptValue=$(jq -r '.scripts["test:lwc"]' < package.json)
+
+    # If no "test:lwc" script property, then add one
+    if [[ -z "$scriptValue" || $scriptValue == null ]]; then
+      local tmp=$(mktemp)
+      jq '.scripts["test:lwc"]="lwc-jest"' package.json > $tmp
+      mv $tmp package.json
+      echo "added test:lwc script property to package.json" >&2
+      cat package.json >&2
+    fi
+
+    # Now that we have package.json to store dependency references to
+    # and to run our lwc jest test scripts, run npm installer
+    npm install
+    npm install @salesforce/lwc-jest --save-dev
+
+  }
+
+  # Checks if there are LWC Jest Test files in any of the package directories of sfdx-project.json.
+  # This is necessary because npm will throw error if no test classes are found.
+  # No arguments.
+  # Returns `true` or `false`
+
+  function check_has_jest_tests() {
+    local hasJestTests=false
+    for pkgDir in $(jq -r '.packageDirectories[].path' < sfdx-project.json)
+    do
+      if [ -f $pkgDir ]; then
+        local fileCnt=$(find $pkgDir -type f -path "**/__tests__/*.test.js" | wc -l);
+        if [ $fileCnt -gt 0 ]; then
+          hasJestTests=true
+        fi
+      fi
+    done
+    echo $hasJestTests
+  }
+
+before_script:
+  - *sfdx_helpers

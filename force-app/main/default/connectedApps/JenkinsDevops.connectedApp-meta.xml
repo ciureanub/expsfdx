@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>ciureanub@yahoo.com</contactEmail>
+    <contactPhone>+40746565380</contactPhone>
+    <label>JenkinsDevops</label>
+    <oauthConfig>
+        <callbackUrl>http://localhost:1717/OauthRedirect</callbackUrl>
+        <certificate>MIIDTjCCAjYCCQDqSDbW4w1anDANBgkqhkiG9w0BAQsFADBpMQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMSIwIAYJKoZIhvcNAQkBFhNjaXVyZWFudWJAeWFob28uY29tMB4XDTIxMDgwNjExMjYwNFoXDTIyMDgwNjExMjYwNFowaTELMAkGA1UEBhMCQVUxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNVBAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDEiMCAGCSqGSIb3DQEJARYTY2l1cmVhbnViQHlhaG9vLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMKk62gKwuKBwhEp/fgIguFLENdnPgsWRcfFca1eQd3Uwfesb5eTpPWV7K/FcwIEbHMPqagPaTk/3CbTX8FmdKHOm6iLC+zPXDkfXWds6dG57c1AJSx5JPB6hWAh2r2oHPTLY5Z8n9iOsfOJawGyv6UTCOVbTqdk7sdXoRxKStfViAGOfDaZXeZgfxcurNoqlLmedk8fll5iAKKKOzbpNk1AOumFZawX1YnLxTKfnrF0OeEitf38rIRAVnttHeZA7y/c76idqfLWS1jDoXYUlyBHzbxYABRwoS8aZeGS4XR2B+4TotJ+8cW90ZvgvJ/OUS1OetN4mw3sEM4MnQfMt8UCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAVGpgohtGlB8XhCAMC6aNoGjZ9M0fx2PVd1JT1mIkQ+2FXMTdBuvp5BdWhdgAcaOjMvUOyP2BsX+Av8YFG7UuUB0R5/wr6YmT/MqZ/LtUwEwj3vcr7TVncNLLGyhlz5FRrlrV5jX+c309QIXm/WYZRpQZtLmteVmoyWrQ/Bj84Hb7TcpY+WLIA/ZxAazs8dZ5QHmrOo6uGzqaIl4TX9JUiZYg57Dq2s24IJ5ZZRJWKSbIO//mqWjIBVWeKK82cB/KrBvjaph9Bc+o8f8IVSzGG2e22JAaamfEE9/+6E882hbF1VIIvpzLTjtfHf5sP4KZlXSBb2xO43hV2RTAeKhyYA==</certificate>
+        <consumerKey>3MVG9SOw8KERNN0__vqAmmiz4cbIuMssKTw8_N7OQaXN86ZNqAp85b9GaDVVLGc8nRo1RT8IUr78d9jbEaIiT</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+    <profileName>Analytics Cloud Integration User</profileName>
+</ConnectedApp>

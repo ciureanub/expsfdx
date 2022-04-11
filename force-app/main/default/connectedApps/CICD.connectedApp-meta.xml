@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>ciureanub@yahoo.com</contactEmail>
+    <contactPhone>0746565380</contactPhone>
+    <label>CICD</label>
+    <oauthConfig>
+        <callbackUrl>http://localhost:1717/OauthRedirect</callbackUrl>
+        <certificate>MIIDtjCCAp4CCQCOu74zksAs+zANBgkqhkiG9w0BAQsFADCBnDELMAkGA1UEBhMCU1cxDjAMBgNVBAgTBVNrYW5lMQ4wDAYDVQQHEwVNQUxNTzEVMBMGA1UEChMMRS5PbiBTdmVyaWdlMQ8wDQYDVQQLEwZJVCxOU1AxGDAWBgNVBAMTD0JvZ2RhbiBDSVVSRUFOVTErMCkGCSqGSIb3DQEJARYcYm9nZGFuLmNpdXJlYW51QG5hdHV2aW9uLmNvbTAeFw0yMTEyMzExMDUxMzhaFw0yMjEyMzExMDUxMzhaMIGcMQswCQYDVQQGEwJTVzEOMAwGA1UECBMFU2thbmUxDjAMBgNVBAcTBU1BTE1PMRUwEwYDVQQKEwxFLk9uIFN2ZXJpZ2UxDzANBgNVBAsTBklULE5TUDEYMBYGA1UEAxMPQm9nZGFuIENJVVJFQU5VMSswKQYJKoZIhvcNAQkBFhxib2dkYW4uY2l1cmVhbnVAbmF0dXZpb24uY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvlXzmTSNZM1x4QlEAANgTD2uGjcbN87GkXImzzcxi5fNw76jDqzvghKzhih1CKafabMdBjCCDf+xwxWMdKJyXkAevI/TTLel/3DUgaggm08qlgkQ0jVF1uvVOE4vMFG9dblHUiFMA5fJ6fUjZEs8eC0i4v6163U8fU3f9mOuwZy364KVA54rucEPa0nh2M+saelM900KUqDiGvBC0hgsFYx4gsdtCFBVRheXNJbrUYBH3JNHIBGmS1cY77i5DIfq3FFfWw5p20qy4IIkFdROkYrl3v2Flhqafr2VkGIPcBARpKi6+qIZb1uCghEs0bM/H7JOdHPCJznWltA2lDrH6wIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQA2qV8rVHUH/pJQjidNbEd1sBxnXZMGINJqCNnAXweWQ+e80gojtCNNaeze0VlkNOXxE0RZWYT/s48ts3dm/ppoi891uRsk/oZK4MH5o3qjts0Hmz1KBjaAL1x+mxE4mYLzAqEH2VnQaYpzYFOgGI689lPPXO06yRfhEeKDF313Aw8YQCF9NDMqGZOgSQAPZmE6emXK4m6IV2qwutwbzPjnPxc/45YViTFiB2h+WqXmbSOBVc+LrDw7hySi3SPm/ei0ytx1fMArEPeXOv5uaYDPnZR+vwCXXUJ/IDYT01h0C+438XLNPdEQw2Xo8UKZOuBrfN851havQ089LdNCTjQu</certificate>
+        <consumerKey>3MVG9SOw8KERNN0__vqAmmiz4cWZHObHYEm8Hipl5u_9cSAbY.26I0i.A9O6wEm26TVKi8nYQij.dMGL9U70v</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>CICD</permissionSetName>
+</ConnectedApp>
