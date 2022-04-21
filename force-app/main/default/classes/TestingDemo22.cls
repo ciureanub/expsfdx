@@ -9,7 +9,7 @@ public with sharing class TestingDemo22{
      * Get the version of the SFDX demo app
      */
     public String getAppVersion() {
-        return '1.0.0'; // new as of 01.03.2022 ! TestingDemo22 !
+        return '1.0.0'; // new as of 31.01.2022 ! TestingDemo22 !
 
     }
 }
